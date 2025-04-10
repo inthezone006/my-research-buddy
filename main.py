@@ -58,7 +58,7 @@ from flask import Flask, request, redirect, url_for, session
 import mysql.connector
 import json
 
-with open('research_buddy/config.json') as config_file:
+with open('config.json') as config_file:
     db_config = json.load(config_file)
 
 cnx = mysql.connector.connect(**db_config)
