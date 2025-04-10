@@ -1,3 +1,3 @@
-config.json
-config.py
+/config.json
+/config.py
 .venv/
