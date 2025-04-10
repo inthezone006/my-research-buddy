@@ -1,2 +1,2 @@
-# my-research-buddy
-My Research Buddy
+# Research Buddy
+v1.0a - Release
