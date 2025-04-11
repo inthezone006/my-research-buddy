@@ -917,7 +917,7 @@ def edit_projects():
                 return "<script>alert('Setting must be between 0-35 characters.'); " \
                 "window.location.href='/edit/projects';</script>"
             
-            query = f"UPDATE projects SET {sdetail} = %s WHERE name = %s;"
+            query = f"UPDATE projects SET {sdetail} = %s WHERE title = %s;"
             cursor.execute(query, (new_value, old_name))
             cnx.commit()
             return "<script>alert('Successfully updated!'); window.location.href='/edit/projects';</script>"
