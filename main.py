@@ -44,15 +44,6 @@
 # (PK, INT) id
 # (NOT NULL, VARCHAR(35)) account
 # (NOT NULL, INT) code
-#
-#
-# TODO: User interface must populate data from the database dynamically (e.g., cannot just hardcode the data) 
-# and must show in demo
-# TODO: Use valid indices (with queries and must be meaningful with valid justification) and create index report
-# TODO: Discussion of transactions, concurrent access to data, and choice of isolation levels
-# TODO: Requirement 1: An interface that allows users to add, edit, and delete data in one main table (edit account)
-# TODO: Requirement 2: A report interface that allows a user (admin) to select which data to 
-# display in report (admin: report all users, professors: report all projects)
 
 from flask import Flask, request, redirect, url_for, session
 import mysql.connector
