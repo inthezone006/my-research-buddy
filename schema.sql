@@ -4,6 +4,13 @@ CREATE DATABASE research_buddy;
 
 USE research_buddy;
 
+CREATE TABLE `departments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(35) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 CREATE TABLE `accounts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(35) NOT NULL,
@@ -13,7 +20,7 @@ CREATE TABLE `accounts` (
   `email` varchar(35) NOT NULL,
   `resume` varchar(35) DEFAULT NULL,
   `linkedin` varchar(35) DEFAULT NULL,
-  `department_id` int(11) DEFAULT NOT NULL,
+  `department_id` int(11) NOT NULL,
   `status` varchar(9) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
@@ -46,13 +53,6 @@ CREATE TABLE `students` (
   CONSTRAINT `chk_status` CHECK (`status` in ('undergraduate','graduate'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `departments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(35) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(35) NOT NULL,
@@ -83,4 +83,4 @@ CREATE TABLE `status_codes` (
   `account` varchar(35) NOT NULL,
   `code` int(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
