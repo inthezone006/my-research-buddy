@@ -87,7 +87,7 @@ def signin():
     elif request.method == 'POST':
         username = request.form.get('username', '')
         password = request.form.get('password', '')
-        cursor.execute("CALL GetAccountByCredentials(%s, %s)", (username, password))
+        cursor.execute("SELECT * FROM accounts WHERE username = %s AND password = %s", (username, password))
         response = cursor.fetchone()
         while cursor.nextset():
             pass
@@ -114,7 +114,7 @@ def signin():
 @app.route("/signup", methods=['GET', 'POST'])    
 def signup():
     if request.method == "GET":
-        cursor.execute("CALL GetAllDepartmentNames()")
+        cursor.execute("SELECT name FROM departments;")
         responses = cursor.fetchall()
 
         while cursor.nextset(): 
@@ -362,7 +362,7 @@ def view_profile():
 @app.route("/accounts", methods=['GET', 'POST'])
 def view_accounts():
     if session['status'] == 'admin':
-        cursor.execute("CALL GetEmails()")
+        cursor.execute("SELECT email FROM accounts;")
         response = cursor.fetchall()
 
         while cursor.nextset(): 
@@ -442,7 +442,7 @@ def view_accounts():
 @app.route("/departments", methods=['GET', 'POST'])
 def view_departments():
     if session['status'] == 'admin':
-        cursor.execute("CALL GetAllDepartmentNames()")
+        cursor.execute("SELECT name FROM departments;")
         response = cursor.fetchall()
 
         while cursor.nextset(): 
@@ -822,7 +822,7 @@ def edit_profile():
 @app.route("/edit/departments", methods=['GET', 'POST'])
 def edit_departments():
     if session['status'] == 'admin':
-        cursor.execute("CALL GetAllDepartmentNames()")
+        cursor.execute("SELECT name FROM departments;")
         response = cursor.fetchall()
 
         while cursor.nextset():
@@ -871,7 +871,7 @@ def edit_departments():
 @app.route("/edit/projects", methods=['GET', 'POST'])
 def edit_projects():
     if session['status'] == 'admin':
-        cursor.execute("CALL GetProjectTitles()")
+        cursor.execute("SELECT title FROM projects;")
         response = cursor.fetchall()
 
         while cursor.nextset():
@@ -1029,7 +1029,7 @@ def edit_status_codes():
 def new_projects():
     if session['status'] == 'professor':
         if request.method == "GET":
-            cursor.execute("CALL GetAllDepartmentNames")
+            cursor.execute("SELECT name FROM departments;")
             responses = cursor.fetchall()
 
             while cursor.nextset():
@@ -1160,7 +1160,7 @@ def logout():
 def delete_account(account_id):
     if 'id' in session:
         if account_id == session['id']:
-            cursor.execute("CALL DeleteAccount(%s)", (account_id,))
+            cursor.execute("DELETE FROM accounts WHERE id = %s;", (account_id,))
             cnx.commit()
             session.clear()
             return "<script>alert('Successfully deleted account!'); window.location.href='/home';</script>"
