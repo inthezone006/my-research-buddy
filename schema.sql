@@ -84,3 +84,15 @@ CREATE TABLE `status_codes` (
   `code` int(4) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `status_codes` (`id`, `account`, `code`) VALUES ('1', 'admin', '1234');
+INSERT INTO 'departments' ('id', 'name') VALUES ('1', 'College of Agriculture'),
+('2', 'College of Arts and Sciences'),
+('3', 'College of Business'),
+('4', 'College of Education'),
+('5', 'College of Engineering'),
+('6', 'College of Health Sciences'),
+('7', 'College of Law'),
+('8', 'College of Medicine'),
+('9', 'College of Pharmacy'),
+('10', 'College of Public Health');
